@@ -154,8 +154,8 @@ else:
 
         # Написать метод деквантизации результата произведения acc из int8 в fp16
         # с использованием параметров масштабирования `w_factor`, `x_factor`, `div_factor`
-        # acc = здесь ваш код
         
+        acc = (divfactor * (x_factor.to(tl.float32) * w_factor.to(tl.float32))) * acc.to(tl.float32)
         acc = acc.to(C.dtype.element_ty)
 
         if has_bias:
@@ -273,7 +273,7 @@ else:
             B += BLOCK_K * SPLIT_K * stride_bk
 
         #здесь ваш код для деквантизации
-        # acc = 
+        acc = (divfactor * (x_factor.to(tl.float32) * w_factor.to(tl.float32))) * acc.to(tl.float32)
         acc = acc.to(C.dtype.element_ty)
 
         if has_bias:

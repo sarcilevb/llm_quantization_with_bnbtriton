@@ -168,3 +168,5 @@ cython_debug/
 **/*.pyc
 *.json
 __pycache__
+
+hf_token.txt
